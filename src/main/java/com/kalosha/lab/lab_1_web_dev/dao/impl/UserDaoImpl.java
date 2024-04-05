@@ -3,6 +3,7 @@ package com.kalosha.lab.lab_1_web_dev.dao.impl;
 import com.kalosha.lab.lab_1_web_dev.dao.BaseDao;
 import com.kalosha.lab.lab_1_web_dev.dao.UserDao;
 import com.kalosha.lab.lab_1_web_dev.entity.User;
+import com.kalosha.lab.lab_1_web_dev.exeption.DaoExeption;
 import com.kalosha.lab.lab_1_web_dev.pool.ConnectionPool;
 import lombok.extern.log4j.Log4j;
 
@@ -48,7 +49,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
     }
 
     @Override
-    public boolean authenticate(String username, String password) {
+    public boolean authenticate(String username, String password) throws DaoExeption {
 
         boolean match = false;
         try (
@@ -65,7 +66,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
                 match = password.equals(passwordFromDB);
             }
         } catch (SQLException e) {
-            log.error("Connection failed:", e);
+            throw new DaoExeption("SQL authenticate failed: ",e);
         }
 
         return match;

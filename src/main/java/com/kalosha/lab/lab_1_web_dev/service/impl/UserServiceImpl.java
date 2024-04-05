@@ -1,6 +1,8 @@
 package com.kalosha.lab.lab_1_web_dev.service.impl;
 
 import com.kalosha.lab.lab_1_web_dev.dao.impl.UserDaoImpl;
+import com.kalosha.lab.lab_1_web_dev.exeption.DaoExeption;
+import com.kalosha.lab.lab_1_web_dev.exeption.ServiceExeption;
 import com.kalosha.lab.lab_1_web_dev.service.UserService;
 
 public class UserServiceImpl implements UserService {
@@ -14,10 +16,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean authenticate(String username, String password) {
+    public boolean authenticate(String username, String password) throws ServiceExeption {
         //TODO: Implement valodation of login and password + md5
         UserDaoImpl userDao = UserDaoImpl.getInstance();
-        boolean match = userDao.authenticate(username, password);
+        boolean match = false;
+        try {
+            match = userDao.authenticate(username, password);
+        } catch (DaoExeption e) {
+            throw new ServiceExeption(e);
+        }
         return match;
     }
 }

@@ -2,6 +2,8 @@ package com.kalosha.lab.lab_1_web_dev.controller;
 
 import com.kalosha.lab.lab_1_web_dev.command.Command;
 import com.kalosha.lab.lab_1_web_dev.command.CommandType;
+import com.kalosha.lab.lab_1_web_dev.exeption.CommandExeption;
+import com.kalosha.lab.lab_1_web_dev.pool.ConnectionPool;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,15 +20,20 @@ public class Controller extends HttpServlet {
 
     }
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
-//        String strNum = request.getParameter("num");
-//        int resNum = Integer.parseInt(strNum) * 2;
-//        request.setAttribute("result", resNum);
+
         String commandStr = request.getParameter("command");
         Command command = CommandType.define(commandStr);
-        String page = command.execute(request);
-        request.getRequestDispatcher(page).forward(request, response);
+        String page = null;
+        try {
+            page = command.execute(request);
+            request.getRequestDispatcher(page).forward(request, response);
+        } catch (CommandExeption e) {
+//            response.sendError(500, e.getMessage()); //1
+            throw new ServletException(e); // 2
+        }
     }
 
     @Override
@@ -35,5 +42,6 @@ public class Controller extends HttpServlet {
     }
 
     public void destroy() {
+        ConnectionPool.getInstance().destroyPool();
     }
 }
