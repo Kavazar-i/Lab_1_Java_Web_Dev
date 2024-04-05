@@ -1,56 +1,66 @@
 package com.kalosha.lab.lab_1_web_dev.pool;
 
 import lombok.extern.log4j.Log4j;
+import org.springframework.context.annotation.PropertySource;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 @Log4j
+@PropertySource("application.properties")
 public class ConnectionPool {
     private static ConnectionPool instance;
     private BlockingQueue<Connection> freeConnectionQueue = new LinkedBlockingQueue<>(POOL_SIZE);
     private BlockingQueue<Connection> usedConnectionQueue = new LinkedBlockingQueue<>(POOL_SIZE);
     private static final int POOL_SIZE = 8;
+    public static final String PROPERTIES = "/application.properties";
 
     static {
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
         } catch (SQLException e) {
             log.error("Connection failed: %s", e);
+            throw new ExceptionInInitializerError(e);
         }
     }
 
     private ConnectionPool() {
-        String db_url = "jdbc:postgresql://localhost:5432/phonestest";
-
-        Properties props = new Properties();
-        props.put("user", "postgres"); //TODO: to ENV
-        props.put("password", "1234567890"); //TODO: to ENV
-
-        props.put("autoReconnect", "true");
-        props.put("characterEncoding", "UTF-8");
-        props.put("useUnicode", "true");
-        props.put("useSSL", "true");
-        props.put("useJDBCCompliantTimezoneShift", "true");
-        props.put("useLegacyDatetimeCode", "false");
-        props.put("serverTimezone", "UTC");
-        props.put("serverSslCert", "classpath:server.crt");
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream(String.valueOf(Paths.get(Paths.get(Objects.requireNonNull(ConnectionPool.class.getResource(PROPERTIES)).toURI()).toUri()))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
 
         for (int i = 0; i < POOL_SIZE; i++) {
             try {
-                Connection connection = DriverManager.getConnection(db_url, props);
+                String url = properties.getProperty("db.url");
+                String user = properties.getProperty("db.user");
+                String password = properties.getProperty("db.password");
+                Connection connection = DriverManager.getConnection(url, user, password);
                 freeConnectionQueue.add(connection);
             } catch (SQLException e) {
                 log.error("Connection failed: %s", e);
+                throw new ExceptionInInitializerError(e);
             }
         }
     }
 
     public static ConnectionPool getInstance() {
+        //TODO: lock
+        instance = new ConnectionPool();
+        //TODO: unlock
         return instance;
     }
 
@@ -71,6 +81,16 @@ public class ConnectionPool {
             freeConnectionQueue.put(connection);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void destroyPool() {
+        for (int i = 0; i < POOL_SIZE; i++) {
+            try {
+                freeConnectionQueue.take().close();
+            } catch (SQLException | InterruptedException e) {
+                log.error("Connection failed: %s", e);
+            }
         }
     }
 }
