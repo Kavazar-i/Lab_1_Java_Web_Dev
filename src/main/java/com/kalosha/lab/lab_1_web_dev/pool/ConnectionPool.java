@@ -1,48 +1,46 @@
 package com.kalosha.lab.lab_1_web_dev.pool;
 
 import lombok.extern.log4j.Log4j;
-import org.springframework.context.annotation.PropertySource;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 @Log4j
-@PropertySource("application.properties")
+//@PropertySource("application.properties") todo
 public class ConnectionPool {
     private static ConnectionPool instance;
     private BlockingQueue<Connection> freeConnectionQueue = new LinkedBlockingQueue<>(POOL_SIZE);
     private BlockingQueue<Connection> usedConnectionQueue = new LinkedBlockingQueue<>(POOL_SIZE);
     private static final int POOL_SIZE = 8;
-    public static final String PROPERTIES = "/application.properties";
+    public static final String PROPERTIES = "prop/application.properties";
 
     static {
         try {
-            DriverManager.registerDriver(new org.postgresql.Driver());
-        } catch (SQLException e) {
-            log.error("Connection failed: %s", e);
-            throw new ExceptionInInitializerError(e);
+//            DriverManager.registerDriver(new org.postgresql.Driver()); todo 55 video 3
+            Class.forName("org.postgresql.Driver");
+//        }  throw new ExceptionInInitializerError(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e); //TODO: end of everything
+//            throw new ExceptionInInitializerError(e); //TODO: end of everything
         }
     }
 
     private ConnectionPool() {
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        InputStream input = classLoader.getResourceAsStream("application.properties");
+// ...
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream(String.valueOf(Paths.get(Paths.get(Objects.requireNonNull(ConnectionPool.class.getResource(PROPERTIES)).toURI()).toUri()))));
+            properties.load(input);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
         }
-
         for (int i = 0; i < POOL_SIZE; i++) {
             try {
                 String url = properties.getProperty("db.url");
@@ -52,7 +50,7 @@ public class ConnectionPool {
                 freeConnectionQueue.add(connection);
             } catch (SQLException e) {
                 log.error("Connection failed: %s", e);
-                throw new ExceptionInInitializerError(e);
+                throw new ExceptionInInitializerError(e); //TODO: end of everything softer можно все в фор с логом и потом если конекшнов меньше 8 досоздать
             }
         }
     }
@@ -70,7 +68,8 @@ public class ConnectionPool {
             connection = freeConnectionQueue.take();
             usedConnectionQueue.put(connection);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            log.error("Connection failed: %s", e);
+            Thread.currentThread().interrupt();
         }
         return connection;
     }
@@ -80,7 +79,17 @@ public class ConnectionPool {
             usedConnectionQueue.remove(connection);
             freeConnectionQueue.put(connection);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            log.error("Connection failed: %s", e);
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    //TODO: deregister driver
+    public void deregisterDriver() {
+        try {
+            DriverManager.deregisterDriver(new org.postgresql.Driver());
+        } catch (SQLException e) {
+            log.error("Connection failed: %s", e);
         }
     }
 
