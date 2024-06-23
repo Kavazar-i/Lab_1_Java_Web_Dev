@@ -26,13 +26,13 @@ public class Controller extends HttpServlet {
 
         String commandStr = request.getParameter("command");
         Command command = CommandType.define(commandStr);
-        String page = null;
+        String page;
         try {
             page = command.execute(request);
-            request.getRequestDispatcher(page).forward(request, response);
+//            request.getRequestDispatcher(page).forward(request, response);//TODO: F5 sec
+            response.sendRedirect(request.getContextPath() + page);//TODO: F5 sec
         } catch (CommandExeption e) {
-//            response.sendError(500, e.getMessage()); //1
-            throw new ServletException(e); // 2
+            response.sendError(500, e.getMessage()); //TODO: use as error handler
         }
     }
 
