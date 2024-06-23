@@ -1,7 +1,7 @@
 package com.kalosha.lab.lab_1_web_dev.service.impl;
 
 import com.kalosha.lab.lab_1_web_dev.dao.impl.UserDaoImpl;
-import com.kalosha.lab.lab_1_web_dev.exeption.DaoExeption;
+import com.kalosha.lab.lab_1_web_dev.exeption.DaoException;
 import com.kalosha.lab.lab_1_web_dev.exeption.ServiceExeption;
 import com.kalosha.lab.lab_1_web_dev.service.UserService;
 
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
         boolean match = false;
         try {
             match = userDao.authenticate(username, password);
-        } catch (DaoExeption e) {
+        } catch (DaoException e) {
             throw new ServiceExeption(e);
         }
         return match;
