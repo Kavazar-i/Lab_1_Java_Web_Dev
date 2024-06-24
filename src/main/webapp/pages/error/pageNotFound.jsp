@@ -9,7 +9,7 @@
     <h1 class="display-1">404</h1>
     <h2>Page Not Found</h2>
     <p>Sorry, the page you are looking for does not exist.</p>
-    <a href="/" class="btn btn-primary">Go to Home</a>
+    <a href="login.jsp" class="btn btn-primary">Go to Home</a>
 </div>
 </body>
 </html>
