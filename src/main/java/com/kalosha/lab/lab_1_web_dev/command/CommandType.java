@@ -1,13 +1,11 @@
 package com.kalosha.lab.lab_1_web_dev.command;
 
-import com.kalosha.lab.lab_1_web_dev.command.impl.AddUserCommand;
-import com.kalosha.lab.lab_1_web_dev.command.impl.DefaultCommand;
-import com.kalosha.lab.lab_1_web_dev.command.impl.LoginCommand;
-import com.kalosha.lab.lab_1_web_dev.command.impl.LogoutCommand;
+import com.kalosha.lab.lab_1_web_dev.command.impl.*;
 
 public enum CommandType {
     ADD_USER(new AddUserCommand()),
     LOGIN(new LoginCommand()),
+    REGISTER(new RegisterCommand()),
     LOGOUT(new LogoutCommand()),
     DEFAULT(new DefaultCommand());
 
