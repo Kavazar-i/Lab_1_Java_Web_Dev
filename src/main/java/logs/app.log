@@ -1,0 +1,46 @@
+24-Jun-2024 22:22:03.022 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.20
+24-Jun-2024 22:22:03.024 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 19 2024 12:49:58 UTC
+24-Jun-2024 22:22:03.024 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.20.0
+24-Jun-2024 22:22:03.024 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+24-Jun-2024 22:22:03.024 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            14.5
+24-Jun-2024 22:22:03.024 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          aarch64
+24-Jun-2024 22:22:03.024 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+24-Jun-2024 22:22:03.024 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.2+13-LTS-58
+24-Jun-2024 22:22:03.024 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+24-Jun-2024 22:22:03.025 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/zaharkalosha/Library/Caches/JetBrains/IntelliJIdea2024.1/tomcat/ec77ac2c-7865-4df0-8a20-e9374aad9452
+24-Jun-2024 22:22:03.025 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /opt/homebrew/Cellar/tomcat/10.1.20/libexec
+24-Jun-2024 22:22:03.027 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/zaharkalosha/Library/Caches/JetBrains/IntelliJIdea2024.1/tomcat/ec77ac2c-7865-4df0-8a20-e9374aad9452/conf/logging.properties
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:59143,suspend=y,server=n
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:/Users/zaharkalosha/Library/Caches/JetBrains/IntelliJIdea2024.1/captureAgent/debugger-agent.jar=file:/private/var/folders/8f/4yy8t__x7pq_r0jfbwzq3v3w0000gn/T/capture.props
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote=
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.port=1099
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.ssl=false
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.password.file=/Users/zaharkalosha/Library/Caches/JetBrains/IntelliJIdea2024.1/tomcat/ec77ac2c-7865-4df0-8a20-e9374aad9452/jmxremote.password
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.access.file=/Users/zaharkalosha/Library/Caches/JetBrains/IntelliJIdea2024.1/tomcat/ec77ac2c-7865-4df0-8a20-e9374aad9452/jmxremote.access
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.rmi.server.hostname=127.0.0.1
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+24-Jun-2024 22:22:03.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+24-Jun-2024 22:22:03.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+24-Jun-2024 22:22:03.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+24-Jun-2024 22:22:03.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+24-Jun-2024 22:22:03.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+24-Jun-2024 22:22:03.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+24-Jun-2024 22:22:03.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+24-Jun-2024 22:22:03.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/zaharkalosha/Library/Caches/JetBrains/IntelliJIdea2024.1/tomcat/ec77ac2c-7865-4df0-8a20-e9374aad9452
+24-Jun-2024 22:22:03.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/opt/homebrew/Cellar/tomcat/10.1.20/libexec
+24-Jun-2024 22:22:03.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/opt/homebrew/Cellar/tomcat/10.1.20/libexec/temp
+24-Jun-2024 22:22:03.042 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/Users/zaharkalosha/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+24-Jun-2024 22:22:03.300 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+24-Jun-2024 22:22:03.325 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [504] milliseconds
+24-Jun-2024 22:22:03.364 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+24-Jun-2024 22:22:03.365 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.20]
+24-Jun-2024 22:22:03.376 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+24-Jun-2024 22:22:03.400 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [73] milliseconds
+Connected to server
+[2024-06-24 10:22:03,457] Artifact Lab_1_Web_Dev:war exploded: Artifact is being deployed, please wait...
+24-Jun-2024 22:22:04.499 INFO [RMI TCP Connection(2)-127.0.0.1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+[2024-06-24 10:22:04,642] Artifact Lab_1_Web_Dev:war exploded: Artifact is deployed successfully
+[2024-06-24 10:22:04,642] Artifact Lab_1_Web_Dev:war exploded: Deploy took 1,185 milliseconds
+24-Jun-2024 22:22:13.380 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/opt/homebrew/Cellar/tomcat/10.1.20/libexec/webapps/manager]
+24-Jun-2024 22:22:13.414 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/opt/homebrew/Cellar/tomcat/10.1.20/libexec/webapps/manager] has finished in [34] ms
