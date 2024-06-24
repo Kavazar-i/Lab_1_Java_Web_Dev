@@ -3,7 +3,8 @@ package com.kalosha.lab.lab_1_web_dev.command;
 public class Router {
     private String page;
     private Type type = Type.FORWARD;
-    enum Type {
+
+    public enum Type {
         FORWARD, REDIRECT
     }
 
@@ -20,7 +21,16 @@ public class Router {
         this.page = page;
     }
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     public void setRedirect() {
         this.type = Type.REDIRECT;
     }
 }
+
