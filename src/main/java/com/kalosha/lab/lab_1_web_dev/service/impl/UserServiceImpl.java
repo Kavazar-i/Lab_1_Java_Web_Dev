@@ -3,8 +3,8 @@ package com.kalosha.lab.lab_1_web_dev.service.impl;
 import com.kalosha.lab.lab_1_web_dev.dao.UserDao;
 import com.kalosha.lab.lab_1_web_dev.dao.impl.UserDaoImpl;
 import com.kalosha.lab.lab_1_web_dev.entity.User;
-import com.kalosha.lab.lab_1_web_dev.exeption.DaoException;
-import com.kalosha.lab.lab_1_web_dev.exeption.ServiceException;
+import com.kalosha.lab.lab_1_web_dev.exception.DaoException;
+import com.kalosha.lab.lab_1_web_dev.exception.ServiceException;
 import com.kalosha.lab.lab_1_web_dev.service.UserService;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     public void registerUser(User user) throws ServiceException {
         try {
-            userDao.create(user);
+            userDao.save(user);
         } catch (DaoException e) {
             throw new ServiceException("Failed to register user", e);
         }

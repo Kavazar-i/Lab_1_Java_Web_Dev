@@ -3,7 +3,7 @@ package com.kalosha.lab.lab_1_web_dev.dao.impl;
 import com.kalosha.lab.lab_1_web_dev.dao.BaseDao;
 import com.kalosha.lab.lab_1_web_dev.dao.UserDao;
 import com.kalosha.lab.lab_1_web_dev.entity.User;
-import com.kalosha.lab.lab_1_web_dev.exeption.DaoException;
+import com.kalosha.lab.lab_1_web_dev.exception.DaoException;
 import com.kalosha.lab.lab_1_web_dev.pool.ConnectionPool;
 
 import java.sql.Connection;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UserDaoImpl extends BaseDao<User> implements UserDao {
     private static final String QUERY = "SELECT password FROM users WHERE username = ?";
-    private static final String ADD_USER_QUERY = "INSERT INTO users (username, password, fullname, email, , skills) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String ADD_USER_QUERY = "INSERT INTO users (username, password, fullname, email, bio, skills) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String FIND_USER_BY_ID_QUERY = "SELECT * FROM users WHERE id = ?";
     private static final String FIND_USER_BY_USERNAME_QUERY = "SELECT * FROM users WHERE username = ?";
     private static final String FIND_ALL_USERS_QUERY = "SELECT * FROM users";
@@ -32,7 +32,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
     }
 
     @Override
-    public User create(User user) throws DaoException {
+    public User save(User user) throws DaoException {
         try (Connection connection = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = connection.prepareStatement(ADD_USER_QUERY)) {
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPassword());
