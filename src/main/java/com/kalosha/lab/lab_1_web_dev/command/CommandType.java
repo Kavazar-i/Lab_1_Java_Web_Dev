@@ -3,12 +3,14 @@ package com.kalosha.lab.lab_1_web_dev.command;
 import com.kalosha.lab.lab_1_web_dev.command.impl.*;
 
 public enum CommandType {
-    ADD_USER(new AddUserCommand()),
     LOGIN(new LoginCommand()),
     REGISTER(new RegisterCommand()),
     LOGOUT(new LogoutCommand()),
+    PROFILE(new ProfileCommand()),
+    UPDATE_PROFILE(new UpdateProfileCommand()),
+    ADD_PROJECT(new AddProjectCommand()),
+    UPDATE_PROJECT(new UpdateProjectCommand()),
     DEFAULT(new DefaultCommand());
-
     Command command;
 
     CommandType(Command command) {

@@ -10,7 +10,7 @@ public class LogoutCommand implements Command {
     public Router execute(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().invalidate();
         try {
-            return new Router("login.jsp", Router.Type.REDIRECT);
+            return new Router("../index.jsp", Router.Type.REDIRECT);
         } catch (Exception e) {
             return new Router("pageNotFound.jsp", Router.Type.FORWARD);
         }

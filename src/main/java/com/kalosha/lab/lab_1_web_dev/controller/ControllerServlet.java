@@ -32,25 +32,8 @@ public class ControllerServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-//    @Override
-//    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        response.setContentType("text/html");
-//
-//        String commandStr = request.getParameter("command");
-//        Command command = CommandType.define(commandStr);
-//        String page;
-//        try {
-//            page = command.execute(request, response).getPage();
-//            request.getRequestDispatcher(page).forward(request, response);//TODO: F5 sec
-////            response.sendRedirect(request.getContextPath() + page);//TODO: F5 sec troubles with / escaping
-//        } catch (CommandException e) {
-//            response.sendError(500, e.getMessage()); //TODO: use as error handler
-//        }
-//    }
-
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String commandStr = request.getAttribute("command").toString();
-//        String commandStr = request.getParameter("command");
         Command command = CommandType.define(commandStr);
 
         try {
