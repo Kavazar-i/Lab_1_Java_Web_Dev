@@ -3,7 +3,7 @@ package com.kalosha.lab.lab_1_web_dev.dao.impl;
 import com.kalosha.lab.lab_1_web_dev.dao.BaseDao;
 import com.kalosha.lab.lab_1_web_dev.dao.ProjectDao;
 import com.kalosha.lab.lab_1_web_dev.entity.Project;
-import com.kalosha.lab.lab_1_web_dev.exeption.DaoException;
+import com.kalosha.lab.lab_1_web_dev.exception.DaoException;
 import com.kalosha.lab.lab_1_web_dev.pool.ConnectionPool;
 
 import java.sql.Connection;
@@ -42,7 +42,7 @@ public class ProjectDaoImpl extends BaseDao<Project> implements ProjectDao {
     }
 
     @Override
-    public Project create(Project project) throws DaoException {
+    public Project save(Project project) throws DaoException {
         try (Connection connection = ConnectionPool.getInstance().getConnection();
              PreparedStatement stmt = connection.prepareStatement(ADD_PROJECT_QUERY)) {
             stmt.setInt(1, project.getUserId());

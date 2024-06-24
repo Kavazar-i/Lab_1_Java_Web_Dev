@@ -19,7 +19,7 @@ public class ProjectServiceImpl {
     }
 
     public void addProject(Project project) throws Exception {
-        projectDao.create(project);
+        projectDao.save(project);
     }
 
     public Project getProjectById(int id) throws Exception {

@@ -1,7 +1,7 @@
 package com.kalosha.lab.lab_1_web_dev.service;
 
 import com.kalosha.lab.lab_1_web_dev.entity.Project;
-import com.kalosha.lab.lab_1_web_dev.exeption.ServiceException;
+import com.kalosha.lab.lab_1_web_dev.exception.ServiceException;
 
 import java.util.List;
 
