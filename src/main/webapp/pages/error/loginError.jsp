@@ -8,7 +8,7 @@
 <div class="container text-center">
     <h2>Login Error</h2>
     <p>Invalid username or password. Please try again.</p>
-    <a href="login.jsp" class="btn btn-primary">Back to Login</a>
+    <a href="../login.jsp" class="btn btn-primary">Back to Login</a>
 </div>
 </body>
 </html>

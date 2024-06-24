@@ -4,9 +4,11 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
-        .have-account {
-            text-align: center;  /* Center align the content */
-            margin-top: 10px;   /* Add some space above the link */
+        .align_center {
+            text-align: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -16,15 +18,17 @@
     <form action="login" method="post">
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" class="form-control" id="username" name="username">
+            <input type="text" class="form-control" id="username" name="username" required>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password">
+            <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-        <div class="have-account">
-            <h2>Have no account? <a href="register.jsp">Register Form</a></h2>
+        <div class="align_center">
+            <button type="submit" class="btn btn-primary align_center">Login</button>
+            <div>
+                <p>Have no account? <a href="register.jsp">Register Form</a></p>
+            </div>
         </div>
     </form>
 </div>
