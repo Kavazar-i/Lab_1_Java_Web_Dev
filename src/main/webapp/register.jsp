@@ -3,6 +3,14 @@
 <head>
     <title>Register</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .align_center {
+            text-align: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -32,7 +40,9 @@
             <label for="skills">Skills:</label>
             <textarea class="form-control" id="skills" name="skills" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <div class="align_center">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
     </form>
 </div>
 </body>

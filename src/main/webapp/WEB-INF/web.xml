@@ -9,10 +9,10 @@
         <error-code>404</error-code>
         <location>/pages/error/pageNotFound.jsp</location>
     </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/pages/error/serverError.jsp</location>
-    </error-page>
+<!--    <error-page>-->
+<!--        <error-code>500</error-code>-->
+<!--        <location>/pages/error/serverError.jsp</location>-->
+<!--    </error-page>-->
 
     <!-- Servlet mappings for registration and login errors -->
     <error-page>
