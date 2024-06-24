@@ -1,23 +1,32 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Multiply Digit</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .have-account {
+            text-align: center;  /* Center align the content */
+            margin-top: 10px;   /* Add some space above the link */
+        }
+    </style>
 </head>
 <body>
-<h1>
-    Multiply a Digit
-</h1>
-<br/>
-<form action="controller" method="get">
-    <input type="hidden" name="command" value="login"/>
-  Username: <input type="text" name="username" value=""/>
-    <br/>
-  Password: <input type="password" name="pass" value=""/>
-    <br/>
-    <input type="submit" name="sub" value="Push"/>
-    <br/>
-    ${login_error_msg}
-</form>
+<div class="container">
+    <h2>Login</h2>
+    <form action="login" method="post">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <div class="have-account">
+            <h2>Have no account? <a href="register.jsp">Register Form</a></h2>
+        </div>
+    </form>
+</div>
 </body>
 </html>
