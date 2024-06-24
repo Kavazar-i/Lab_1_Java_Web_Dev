@@ -6,7 +6,7 @@ import com.kalosha.lab.lab_1_web_dev.exception.ServiceException;
 import java.util.List;
 
 public interface ProjectService {
-    public void addProject(Project project) throws ServiceException;
+    public Project addProject(Project project) throws ServiceException;
 
     public Project getProjectById(int id) throws ServiceException;
 
@@ -14,5 +14,7 @@ public interface ProjectService {
 
     public void updateProject(Project project) throws ServiceException;
 
-    public void deleteProject(int id) throws ServiceException;
+    public void deleteProject(Project project) throws ServiceException;
+
+    public void updatePhotoFilename(int projectId, String photoFilename) throws ServiceException;
 }

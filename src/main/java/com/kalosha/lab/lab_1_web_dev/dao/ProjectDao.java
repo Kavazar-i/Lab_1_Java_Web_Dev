@@ -18,4 +18,5 @@ public interface ProjectDao {
 
     List<Project> getProjectsByUserId(int userId) throws DaoException;
 
+    void updatePhotoFilename(int projectId, String photoFilename) throws Exception;
 }

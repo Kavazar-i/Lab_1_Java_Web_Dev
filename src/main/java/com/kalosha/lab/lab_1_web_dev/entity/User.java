@@ -1,6 +1,8 @@
 package com.kalosha.lab.lab_1_web_dev.entity;
 
 
+import java.util.List;
+
 public class User {
     private int id;
     private String username;
@@ -9,6 +11,7 @@ public class User {
     private String email;
     private String bio;
     private String skills;
+    private List<Project> projects;
 
     public int getId() {
         return id;
@@ -64,5 +67,13 @@ public class User {
 
     public void setSkills(String skills) {
         this.skills = skills;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 }

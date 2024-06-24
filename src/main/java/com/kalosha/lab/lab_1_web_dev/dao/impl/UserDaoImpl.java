@@ -41,6 +41,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
             stmt.setString(5, user.getBio());
             stmt.setString(6, user.getSkills());
             stmt.executeUpdate();
+            ConnectionPool.getInstance().releaseConnection(connection);
         } catch (SQLException e) {
             throw new DaoException("Error while creating user", e);
         }
@@ -49,12 +50,14 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
 
     @Override
     public User getUserById(int id) throws DaoException {
-        try (Connection connection = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = connection.prepareStatement(FIND_USER_BY_ID_QUERY)) {
+        try (Connection connection = ConnectionPool.getInstance().getConnection();
+             PreparedStatement stmt = connection.prepareStatement(FIND_USER_BY_ID_QUERY)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return fillEmptyUserWithData(rs);
             }
+            ConnectionPool.getInstance().releaseConnection(connection);
         } catch (SQLException e) {
             throw new DaoException("Error while finding user by id", e);
         }
@@ -69,6 +72,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
             if (rs.next()) {
                 return fillEmptyUserWithData(rs);
             }
+            ConnectionPool.getInstance().releaseConnection(connection);
         } catch (SQLException e) {
             throw new DaoException("Error while finding user by username", e);
         }
@@ -82,6 +86,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
             while (rs.next()) {
                 users.add(fillEmptyUserWithData(rs));
             }
+            ConnectionPool.getInstance().releaseConnection(connection);
         } catch (SQLException e) {
             throw new DaoException("Error while finding all users", e);
         }
@@ -99,6 +104,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
             stmt.setString(6, user.getSkills());
             stmt.setInt(7, user.getId());
             stmt.executeUpdate();
+            ConnectionPool.getInstance().releaseConnection(connection);
         } catch (SQLException e) {
             throw new DaoException("Error while updating user", e);
         }
@@ -109,6 +115,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
     public void delete(User user) throws DaoException {
         try (Connection connection = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = connection.prepareStatement(DELETE_USER_QUERY)) {
             stmt.setInt(1, user.getId());
+            ConnectionPool.getInstance().releaseConnection(connection);
         } catch (SQLException e) {
             throw new DaoException("Error while deleting user", e);
         }
@@ -128,6 +135,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
                 passwordFromDB = resultSet.getString(1);
                 match = password.equals(passwordFromDB);
             }
+            ConnectionPool.getInstance().releaseConnection(connection);
         } catch (SQLException e) {
             throw new DaoException("SQL authenticate failed: ", e);
         }

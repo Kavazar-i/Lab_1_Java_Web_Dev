@@ -5,8 +5,8 @@ public class Project {
     private int userId;
     private String title;
     private String description;
-    private String imageUrl;
     private String projectUrl;
+    private String photoFilename;
 
     public int getId() {
         return id;
@@ -40,19 +40,19 @@ public class Project {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getProjectUrl() {
         return projectUrl;
     }
 
     public void setProjectUrl(String projectUrl) {
         this.projectUrl = projectUrl;
+    }
+
+    public String getPhotoFilename() {
+        return photoFilename;
+    }
+
+    public void setPhotoFilename(String photoFilename) {
+        this.photoFilename = photoFilename;
     }
 }
