@@ -9,7 +9,7 @@
     <h1 class="display-1">500</h1>
     <h2>Internal Server Error</h2>
     <p>Oops, something went wrong on our end. Please try again later.</p>
-    <a href="/" class="btn btn-primary">Go to Home</a>
+    <a href="index.jsp" class="btn btn-primary">Go to Home</a>
 </div>
 </body>
 </html>
